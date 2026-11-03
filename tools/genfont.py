@@ -226,7 +226,7 @@ def ranges_of(glyphs):
 
 
 def write_fnt(glyphs, alt, dst):
-    """HANEDIT mini 글꼴 파일 (HANEDIT.FNT): 글자 그림을 EXE 밖에 두고 필요할 때 읽음.
+    """HANEDIT lite 글꼴 파일 (HANEDIT.FNT): 글자 그림을 EXE 밖에 두고 필요할 때 읽음.
     "HFN1", u16 본 표 범위 수, u16 넓은 한글 표 범위 수,
     범위마다 {u16 첫 글자, u16 끝 글자, u8 넓음, u8 0, u32 파일 안 위치}, 그다음 글자 그림."""
     import struct
@@ -267,7 +267,7 @@ if __name__ == '__main__':
     a = sys.argv[1:]
     glyphs, alt, src = build(a[0], a[1], a[2], a[3])
     print('glyphs=%d sources=%s' % (len(glyphs), src))
-    if len(a) > 5 and a[4] == '--fnt':      # HANEDIT mini: genfont.py ... --fnt HANEDIT.FNT
+    if len(a) > 5 and a[4] == '--fnt':      # HANEDIT lite: genfont.py ... --fnt HANEDIT.FNT
         nr, na, nb = write_fnt(glyphs, alt, a[5])
         print('fnt: main ranges=%d alt ranges=%d bytes=%d' % (nr, na, nb))
     elif len(a) > 5 and a[5] == '--preview':

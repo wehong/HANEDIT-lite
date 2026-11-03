@@ -1,4 +1,4 @@
-/* HANEDIT mini: 글꼴 파일(HANEDIT.FNT)과 글자 캐시
+/* HANEDIT lite: 글꼴 파일(HANEDIT.FNT)과 글자 캐시
  *
  * HANEDIT.FNT (tools/genfont.py --fnt 로 만듦, 모든 수는 little-endian)
  *   "HFN1", u16 본 표 범위 수, u16 넓은 한글 표 범위 수

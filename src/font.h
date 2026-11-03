@@ -1,7 +1,7 @@
 #ifndef FONT_H
 #define FONT_H
 
-/* HANEDIT mini: 글꼴은 HANEDIT.FNT 파일에 있고, 화면에 나온 글자만 읽어 캐시에 둠.
+/* HANEDIT lite: 글꼴은 HANEDIT.FNT 파일에 있고, 화면에 나온 글자만 읽어 캐시에 둠.
    메모리에는 범위 표(글자 폭을 아는 데 씀)와 글자 1,024개분 캐시만 올림. */
 
 /* font_hangul_wide: 지금 글자를 놓을 때 쓰는 한글 글꼴 (1 넓은, 0 좁은).

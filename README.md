@@ -1,13 +1,13 @@
-# HANEDIT mini 1.0 — 640KB에서 도는 MS-DOS용 VGA 한글 텍스트 편집기
+# HANEDIT lite 1.0.1 — 640KB에서 도는 MS-DOS용 VGA 한글 텍스트 편집기
 
-HANEDIT 1.0과 같은 편집기를 **16비트 리얼 모드**로 다시 빌드한 판입니다.
+HANEDIT(32비트판, 지금 1.0.2)과 같은 편집기를 **16비트 리얼 모드**로 다시 빌드한 판입니다.
 DOS 익스텐더 없이 DOS 기본 메모리(640KB) 안에서 돌아가며, 확장 메모리(XMS/EMS)가 없는
 PC에서도 실행됩니다. 화면, 메뉴, 글쇠, 한글 입력, 한자 바꾸기, 자동 줄 바꿈, 설정 파일은
-1.0과 같습니다. 버전은 도움말 메뉴의 '이 프로그램은...'에 'HANEDIT mini 1.0'으로 나옵니다.
+1.0과 같습니다. 버전은 도움말 메뉴의 '이 프로그램은...'에 'HANEDIT lite 1.0.1'로 나옵니다.
 
 ## 1.0과 다른 점
 
-| | HANEDIT 1.0 | HANEDIT mini |
+| | HANEDIT (32비트판) | HANEDIT lite |
 |---|---|---|
 | 실행 방식 | 32비트 보호 모드 (DOS/32A) | 16비트 리얼 모드, 익스텐더 없음 |
 | CPU | 386 이상 | 16비트 코드 (286 이상 권장, VGA 필요) |
@@ -27,7 +27,7 @@ PC에서도 실행됩니다. 화면, 메뉴, 글쇠, 한글 입력, 한자 바�
 ## 실행
 
 ```
-C:\> HANEDITM [파일이름]
+C:\> HANEDITL [파일이름]
 ```
 
 DOSBox(메모리 1MB, 확장 메모리 없이 시험), FreeDOS, MS-DOS 5/6.x에서 실행됩니다.
@@ -39,7 +39,7 @@ DOSBox 1MB 설정에서 DOS의 빈 기본 메모리는 632KB이고, 그중 프�
 
 | 파일 | 크기 | 필요 여부 |
 |---|---|---|
-| `HANEDITM.EXE` | 약 130KB | 꼭 필요 |
+| `HANEDITL.EXE` | 약 130KB | 꼭 필요 |
 | `HANEDIT.FNT` | 약 1.3MB | 꼭 필요 (글꼴). 없으면 실행하지 않고 알려 줌 |
 | `HANJA.DIC` | 약 3.9MB | 한자 바꾸기(F9)를 쓸 때만 필요. 1.0의 것과 같은 파일 |
 | `HANEDIT.CFG` | 1KB 미만 | 설정을 바꾸면 저절로 만들어짐. 1.0과 같은 형식 |
@@ -110,10 +110,10 @@ DOSBox 1MB 설정에서 DOS의 빈 기본 메모리는 632KB이고, 그중 프�
 - 고르기: 숫자 1~9, 또는 ↑↓ 후 Enter / 쪽 넘기기: PgDn·PgUp (→ ← Space) / 취소: Esc
 - 바꾼 것은 Ctrl-Z로 되돌릴 수 있습니다
 
-사전 `HANJA.DIC`(약 3.9MB)은 `HANEDITM.EXE`와 같은 디렉터리에 두어야 합니다. libhangul의
+사전 `HANJA.DIC`(약 3.9MB)은 `HANEDITL.EXE`와 같은 디렉터리에 두어야 합니다. libhangul의
 한자 사전으로 만든 것으로 두 부분으로 되어 있습니다.
 
-- 한 글자: 한글 527음절, 한자 후보 21,824개 (약 240KB). mini는 음절 색인(약 4KB)만 메모리에 두고 후보와 뜻은 그때그때 파일에서 읽음
+- 한 글자: 한글 527음절, 한자 후보 21,824개 (약 240KB). lite는 음절 색인(약 4KB)만 메모리에 두고 후보와 뜻은 그때그때 파일에서 읽음
 - 낱말: 186,679개, 후보 238,031개. 메모리에 읽지 않고 파일에서 바로 찾음 (이진 탐색,
   한 번 찾는 데 약 20번 읽기). 후보는 libhangul의 낱말 빈도 자료(freq-hanjaeo.txt) 순
 
@@ -140,7 +140,7 @@ python3 tools/genhanja.py libhangul/data/hanja/hanja.txt libhangul/data/hanja/fr
 
 ## 설정 파일 (HANEDIT.CFG)
 
-본문 글꼴, 배경색, 자동 줄 바꿈은 `HANEDITM.EXE`와 같은 디렉터리의 `HANEDIT.CFG`에
+본문 글꼴, 배경색, 자동 줄 바꿈은 `HANEDITL.EXE`와 같은 디렉터리의 `HANEDIT.CFG`에
 저장됩니다. 메뉴나 Alt-B로 바꾸는 즉시 저장되고, 다음에 켤 때 그대로 불러옵니다. 파일이
 없으면 넓은 한글·어두운 바탕으로 시작합니다. 손으로 고쳐도 됩니다
 (대소문자·앞뒤 공백 무시, `;` 뒤는 주석):
@@ -175,7 +175,7 @@ Shift와 함께 쓰면 블록을 잡습니다.
 
 ```sh
 export WATCOM=/opt/watcom PATH=$WATCOM/binl64:$PATH INCLUDE=$WATCOM/h
-wmake            # -> HANEDITM.EXE (wcc -ml large 모델, -zt=256, 스택 16KB)
+wmake            # -> HANEDITL.EXE (wcc -ml large 모델, -zt=256, 스택 16KB)
 ```
 
 글꼴 파일 `HANEDIT.FNT`를 다시 만들려면 (1.0의 내장 글꼴과 같은 내용):
@@ -206,6 +206,15 @@ python3 tools/genfont.py unifont.hex Galmuri14.bdf GalmuriMono11.bdf Galmuri11-C
 - 탭은 불러올 때 8칸 간격 공백으로 바뀝니다
 - BMP 밖 문자(이모지 등)와 잘못된 UTF-8 바이트는 U+FFFD로 바뀝니다
 - 한자 → 한글 되바꾸기는 없습니다 (Ctrl-Z로 되돌리기는 됨)
+
+## 바뀐 내용
+
+- **lite 1.0.1** — 이름을 HANEDIT mini에서 **HANEDIT lite**로 바꿈 (실행 파일 `HANEDITM.EXE` →
+  `HANEDITL.EXE`). 글자를 칠 때 화면 다시 만들기를 빠르게 함 (글쇠 하나에 DOSBox 기본 속도·한 화면
+  가득 한글일 때 약 250ms → 약 19ms). 메뉴 줄·제목 줄·눈금자와 커서가 없는 본문 줄은 바뀌지
+  않았으면 지난번에 만든 줄을 그대로 쓰고(줄마다 고친 번호로 판단), 빈칸 채우기와 영문·한글 폭
+  계산에 빠른 길을 둠. 화면 기억에 메모리 약 19KB를 더 씀. 화면 모양은 1.0과 같음
+- **1.0** — 첫 판 (당시 이름 HANEDIT mini. HANEDIT 1.0.1 기능을 16비트 리얼 모드로)
 
 ## 라이선스
 
